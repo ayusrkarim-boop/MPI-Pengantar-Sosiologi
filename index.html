@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Interaktif - Pengantar Sosiologi (MAN 1 Pohuwato)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Amiri & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- html2pdf CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        gold: {
+                            500: '#d97706',
+                            600: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        amiri: ['Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(209, 250, 229, 0.8);
+        }
+        .glass-dark {
+            background: rgba(6, 78, 59, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #047857;
+        }
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-emerald-900 via-emerald-800 to-slate-900 min-h-full font-sans text-slate-800 flex flex-col antialiased">
+
+    <!-- 1. SPLASH SCREEN -->
+    <div id="splashScreen" class="fixed inset-0 z-50 bg-emerald-950 flex flex-col items-center justify-center text-white transition-opacity duration-700">
+        <div class="relative mb-6">
+            <div class="w-28 h-28 rounded-full bg-emerald-600/30 flex items-center justify-center animate-ping absolute inset-0"></div>
+            <div class="w-28 h-28 rounded-full bg-emerald-700 flex items-center justify-center shadow-2xl relative z-10 border-4 border-amber-400">
+                <i class="fa-solid fa-users-viewfinder text-4xl text-amber-300"></i>
+            </div>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold tracking-wide text-center px-4 font-sans text-amber-300">Media Pembelajaran Interaktif</h1>
+        <p class="text-emerald-200 mt-2 text-lg font-medium">Pengantar Sosiologi • Kurikulum Berbasis Cinta</p>
+        <div class="mt-8 flex items-center gap-2 text-emerald-300 text-sm">
+            <i class="fa-solid fa-circle-notch fa-spin"></i> Memuat Lingkungan Belajar MAN 1 Pohuwato...
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="appContainer" class="flex-1 flex flex-col max-w-7xl w-full mx-auto p-3 sm:p-6 opacity-0 transition-opacity duration-700">
+
+        <!-- 2. HALAMAN COVER -->
+        <div id="coverPage" class="flex-1 flex flex-col justify-between rounded-3xl glass-card shadow-2xl overflow-hidden p-6 sm:p-10 relative">
+            <!-- Top Header Badge -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-emerald-100 pb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-700 flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid fa-book-open-reader text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Madrasah Aliyah • Fase E / Kelas X</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">Mata Pelajaran Sosiologi</h2>
+                    </div>
+                </div>
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-slate-700">MAN 1 Pohuwato</p>
+                    <p class="text-xs text-slate-500">Kabupaten Pohuwato, Gorontalo</p>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="my-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-8">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-100 text-amber-800 text-sm font-semibold">
+                        <i class="fa-solid fa-heart text-rose-600"></i> Kurikulum Berbasis Cinta (KBC Kemenag)
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Memahami Masyarakat <span class="text-emerald-700 underline decoration-amber-400">dengan Hati</span>
+                    </h1>
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        Mempelajari fungsi sosiologi sebagai ilmu yang secara kritis, analitis, kreatif, dan solutif mengkaji dinamika masyarakat, khususnya di bumi pertiwi Kabupaten Pohuwato.
+                    </p>
+                    
+                    <!-- 3 Action Buttons on Cover -->
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <button onclick="openModal('devModal')" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-semibold shadow-lg transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-user-tie text-amber-400"></i> Informasi Pengembang
+                        </button>
+                        <button onclick="openModal('tpModal')" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold shadow-lg transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-bullseye text-amber-300"></i> Tujuan Pembelajaran
+                        </button>
+                        <button onclick="goToIdentityForm()" class="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold shadow-xl transition transform hover:-translate-y-0.5 animate-pulse-soft">
+                            <i class="fa-solid fa-rocket"></i> MULAI BELAJAR
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual Animated SVG Illustration -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md bg-gradient-to-br from-emerald-100 to-teal-50 rounded-3xl p-6 border border-emerald-200 shadow-inner flex flex-col items-center animate-float">
+                        <svg class="w-64 h-64 text-emerald-700" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="120" cy="120" r="100" fill="#E6F4EA" opacity="0.6"/>
+                            <circle cx="120" cy="120" r="70" stroke="#059669" stroke-width="2" stroke-dasharray="6 6" class="animate-spin" style="animation-duration: 25s; transform-origin: center;"/>
+                            <!-- Central Hub -->
+                            <circle cx="120" cy="120" r="28" fill="#047857" />
+                            <path d="M110 120H130M120 110V130" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Connected Nodes -->
+                            <g class="animate-pulse">
+                                <circle cx="120" cy="50" r="18" fill="#D97706"/>
+                                <path d="M120 68V92" stroke="#D97706" stroke-width="3"/>
+                                <circle cx="60" cy="155" r="18" fill="#059669"/>
+                                <path d="M74 147L100 130" stroke="#059669" stroke-width="3"/>
+                                <circle cx="180" cy="155" r="18" fill="#047857"/>
+                                <path d="M166 147L140 130" stroke="#047857" stroke-width="3"/>
+                            </g>
+                            <!-- Mini Icons Representation via SVG Paths -->
+                            <path d="M115 45H125V55H115Z" fill="white"/>
+                            <path d="M55 150H65V160H55Z" fill="white"/>
+                            <path d="M175 150H185V160H175Z" fill="white"/>
+                        </svg>
+                        <div class="mt-4 text-center">
+                            <span class="text-xs font-bold text-emerald-800 bg-emerald-200/80 px-3 py-1 rounded-full">Sosiologi Berbasis Empati & Kontekstual</span>
+                            <p class="text-xs text-slate-600 mt-2">Menghubungkan Teori Sosial dengan Realitas Sosial Teluk Tomini & Pohuwato</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Info -->
+            <div class="border-t border-emerald-100 pt-4 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+                <p>Pengembang: <strong>Sri Rahayu Karim, S.Sos.</strong> (MAN 1 Pohuwato)</p>
+                <p class="mt-1 sm:mt-0">E-Modul Interaktif Kemenag RI • Kurikulum Merdeka</p>
+            </div>
+        </div>
+
+        <!-- FLOATING SLIDE: INFORMASI PENGEMBANG -->
+        <div id="devModal" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm hidden items-center justify-center p-4">
+            <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-emerald-100 relative transform transition-all">
+                <button onclick="closeModal('devModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="text-center">
+                    <div class="relative inline-block mb-4">
+                        <img src="https://iili.io/CSAHRQ1.png" alt="Sri Rahayu Karim" onerror="this.src='https://placehold.co/120x120/059669/ffffff?text=SRK'" class="w-28 h-28 rounded-full object-cover border-4 border-emerald-600 shadow-xl mx-auto">
+                        <span class="absolute bottom-0 right-0 bg-amber-500 text-white p-1.5 rounded-full text-xs shadow"><i class="fa-solid fa-check"></i></span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900">Sri Rahayu Karim, S.Sos.</h3>
+                    <p class="text-emerald-700 font-semibold text-sm mt-1">Guru Mata Pelajaran Sosiologi</p>
+                    <div class="inline-block bg-emerald-50 text-emerald-800 text-xs px-3 py-1 rounded-full mt-2 font-medium">
+                        MAN 1 Pohuwato, Provinsi Gorontalo
+                    </div>
+                </div>
+                <div class="mt-6 space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-4">
+                    <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl">
+                        <i class="fa-solid fa-envelope text-emerald-600 w-5"></i>
+                        <span class="font-medium text-slate-800 break-all">sri_40500762196002@madrasah.kemenag.go.id</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl">
+                        <i class="fa-solid fa-school text-emerald-600 w-5"></i>
+                        <span>Madrasah Aliyah Negeri 1 Pohuwato - Kab. Pohuwato</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl">
+                        <i class="fa-solid fa-award text-amber-600 w-5"></i>
+                        <span>Pengembang Kurikulum Berbasis Cinta & Pembelajaran Digital Madrasah</span>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <button onclick="closeModal('devModal')" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl shadow-lg transition">
+                        Kembali ke Cover
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLOATING SLIDE: TUJUAN PEMBELAJARAN & KBC -->
+        <div id="tpModal" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm hidden items-center justify-center p-4">
+            <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-emerald-100 relative max-h-[90vh] overflow-y-auto">
+                <button onclick="closeModal('tpModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-bullseye text-lg"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900">Tujuan Pembelajaran & Nilai Dasar</h3>
+                </div>
+                
+                <div class="space-y-4 text-slate-700 text-sm sm:text-base">
+                    <div class="bg-emerald-50 border-l-4 border-emerald-600 p-4 rounded-r-xl">
+                        <h4 class="font-bold text-emerald-900 mb-1">Capaian & Tujuan Pembelajaran (Fase E / Kelas X):</h4>
+                        <p class="text-slate-700 leading-relaxed">
+                            Peserta didik mampu menjelaskan fungsi sosiologi sebagai ilmu yang secara <strong>kritis, analitis, kreatif, dan solutif</strong> mengkaji masyarakat, serta menumbuhkan kepekaan sosial berbasis kasih sayang.
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+                        <h4 class="font-bold text-amber-900 mb-1 flex items-center gap-2">
+                            <i class="fa-solid fa-quran text-amber-700"></i> Integrasi Ayat Al-Qur'an Tematik:
+                        </h4>
+                        <p class="font-amiri text-right text-xl text-slate-900 my-2 leading-loose" dir="rtl">
+                            يَٰأَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوباً وَقَبَائِلَ لِتَعَارَفُوا إِنَّ أَكْرَمَكُمْ عِندَ اللَّهِ أَتْقَاكُمْ إِنَّ اللَّهَ عَلِيْمٌ خَبِيْرٌ
+                        </p>
+                        <p class="text-xs text-slate-600 italic">
+                            "Wahai manusia! Sungguh, Kami telah menciptakan kamu dari seorang laki-laki dan seorang perempuan, kemudian Kami jadikan kamu berbangsa-bangsa dan bersuku-suku agar kamu saling mengenal. Sesungguhnya yang paling mulia di antara kamu di sisi Allah adalah orang yang paling bertakwa. Sungguh, Allah Maha Mengetahui, Maha Teliti." <strong class="not-italic text-emerald-800">(QS. Al-Hujurat: 13)</strong>
+                        </p>
+                    </div>
+
+                    <div class="bg-teal-50 border-l-4 border-teal-600 p-4 rounded-r-xl">
+                        <h4 class="font-bold text-teal-900 mb-1"><i class="fa-solid fa-heart text-rose-600"></i> Kurikulum Berbasis Cinta (KBC Kemenag RI):</h4>
+                        <p class="text-slate-700">
+                            Menanamkan cinta kepada Allah & Rasul, cinta sesama manusia tanpa memandang perbedaan suku/wilayah di Kabupaten Pohuwato, cinta kelestarian alam Teluk Tomini & daratan, serta cinta tanah air (moderasi beragama & kebangsaan).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <button onclick="closeModal('tpModal')" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl shadow-lg transition">
+                        Kembali ke Cover
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. FORM INPUT IDENTITAS SISWA -->
+        <div id="identityPage" class="hidden flex-1 flex flex-col justify-center items-center p-4">
+            <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border border-emerald-100">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-inner">
+                        <i class="fa-solid fa-id-card text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900">Identitas Siswa</h2>
+                    <p class="text-sm text-slate-500 mt-1">Silakan masukkan data diri Anda sebelum memulai petualangan belajar.</p>
+                </div>
+
+                <form id="studentForm" onsubmit="handleIdentitySubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Nama Lengkap Siswa</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400"><i class="fa-solid fa-user"></i></span>
+                            <input type="text" id="studentName" required placeholder="Contoh: Siti Aisyah" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none text-slate-800 font-medium">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Kelas / Rombel</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400"><i class="fa-solid fa-graduation-cap"></i></span>
+                            <input type="text" id="studentClass" required placeholder="Contoh: X-1 / Fase E" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none text-slate-800 font-medium">
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <button type="submit" class="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                            <span>Lanjut ke Panduan</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 4. PENGANTAR & PANDUAN PENGGUNA (SLIDES) -->
+        <div id="guidePage" class="hidden flex-1 flex flex-col justify-between rounded-3xl glass-card shadow-2xl p-6 sm:p-10 relative">
+            <div class="border-b border-emerald-100 pb-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900">Panduan Pengguna MPI</h2>
+                        <p class="text-xs text-slate-500">Selamat datang, <span id="displayName" class="font-bold text-emerald-700"></span>!</p>
+                    </div>
+                </div>
+                <div class="text-sm font-semibold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">
+                    Panduan <span id="currentGuideSlide">1</span> / 3
+                </div>
+            </div>
+
+            <!-- Guide Slide Content -->
+            <div class="my-auto py-6">
+                <!-- Slide 1 -->
+                <div class="guide-slide space-y-4" data-slide="1">
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-700 rounded-3xl flex items-center justify-center mx-auto text-3xl shadow-inner mb-4">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center text-slate-900">1. Menu BELAJAR (Materi Mendalam)</h3>
+                    <p class="text-slate-600 text-center max-w-xl mx-auto leading-relaxed">
+                        Pelajari 6 slide materi komprehensif yang memadukan konsep sosiologi modern dengan kearifan lokal Kabupaten Pohuwato dan nilai Kurikulum Berbasis Cinta. Di setiap akhir slide materi, selesaikan tantangan interaktif singkat untuk membuka pemahaman Anda!
+                    </p>
+                </div>
+                <!-- Slide 2 -->
+                <div class="guide-slide space-y-4 hidden" data-slide="2">
+                    <div class="w-20 h-20 bg-amber-100 text-amber-700 rounded-3xl flex items-center justify-center mx-auto text-3xl shadow-inner mb-4">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center text-slate-900">2. Menu BERMAIN (Tantangan Literasi & Numerasi)</h3>
+                    <p class="text-slate-600 text-center max-w-xl mx-auto leading-relaxed">
+                        Setelah menuntaskan menu Belajar, menu Bermain akan terbuka otomatis! Nikmati 10 tantangan seru berstimulus teks 100-200 kata dengan mekanik drag & drop, menjodohkan, pilihan ganda, dan menyusun urutan peristiwa sosial.
+                    </p>
+                </div>
+                <!-- Slide 3 -->
+                <div class="guide-slide space-y-4 hidden" data-slide="3">
+                    <div class="w-20 h-20 bg-teal-100 text-teal-700 rounded-3xl flex items-center justify-center mx-auto text-3xl shadow-inner mb-4">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center text-slate-900">3. Menu BERLATIH & Laporan PDF</h3>
+                    <p class="text-slate-600 text-center max-w-xl mx-auto leading-relaxed">
+                        Uji pemahaman akhir melalui 10 soal asesmen berjenjang (Level 1, 2, dan 3/HOTS) dengan pembobotan nilai resmi (Total 100). Dapatkan laporan hasil belajar lengkap beserta opsi cetak atau unduh dokumen PDF otomatis!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Guide Navigation Footer -->
+            <div class="border-t border-emerald-100 pt-4 flex justify-between items-center">
+                <button onclick="prevGuideSlide()" id="prevGuideBtn" class="px-5 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Sebelumnya
+                </button>
+                <div class="flex gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-emerald-600 indicator-dot" data-dot="1"></span>
+                    <span class="w-3 h-3 rounded-full bg-slate-300 indicator-dot" data-dot="2"></span>
+                    <span class="w-3 h-3 rounded-full bg-slate-300 indicator-dot" data-dot="3"></span>
+                </div>
+                <button onclick="nextGuideSlide()" id="nextGuideBtn" class="px-6 py-2.5 rounded-xl bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition flex items-center gap-2">
+                    <span id="nextGuideText">Selanjutnya</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. MENU UTAMA (DASHBOARD SEQUENTIAL LOCKING) -->
+        <div id="mainMenuPage" class="hidden flex-1 flex flex-col justify-between rounded-3xl glass-card shadow-2xl p-6 sm:p-10 relative">
+            <!-- Header Profile & Title -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-emerald-100 pb-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Dashboard Utama • MAN 1 Pohuwato</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Pusat Aktivitas Pembelajaran</h2>
+                </div>
+                <div class="flex items-center gap-3 bg-emerald-50 px-4 py-2.5 rounded-2xl border border-emerald-200">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-700 text-white font-bold flex items-center justify-center">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">Siswa Aktif</p>
+                        <p class="text-sm font-bold text-slate-800" id="profileStudentName">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Menu Cards with Sequential Locking -->
+            <div class="my-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
+                <!-- Menu 1: BELAJAR -->
+                <div onclick="openModule('belajar')" class="group bg-white rounded-3xl p-6 border-2 border-emerald-500 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 cursor-pointer flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-emerald-100 rounded-full opacity-50 group-hover:scale-125 transition"></div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-700 text-white flex items-center justify-center text-2xl shadow-md">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-lock-open text-emerald-600"></i> TERBUKA
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">1. Menu BELAJAR</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Eksplorasi 6 slide materi mendalam: Pengertian, Sifat, Tujuan, Karakteristik, Konsep, serta Tindakan & Interaksi Sosial berkonteks Pohuwato.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-emerald-700 font-semibold text-sm">
+                        <span>Mulai Membaca</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </div>
+                </div>
+
+                <!-- Menu 2: BERMAIN -->
+                <div id="cardBermain" onclick="openModule('bermain')" class="group bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 cursor-pointer flex flex-col justify-between relative overflow-hidden opacity-90">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-amber-50 rounded-full opacity-50 group-hover:scale-125 transition"></div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div id="iconBermain" class="w-14 h-14 rounded-2xl bg-slate-300 text-slate-700 flex items-center justify-center text-2xl shadow-md">
+                                <i class="fa-solid fa-lock" id="lockBermainIcon"></i>
+                            </div>
+                            <span id="badgeBermain" class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-lock text-slate-500"></i> TERKUNCI
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">2. Menu BERMAIN</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            10 tantangan interaktif gamifikasi berstimulus literasi & numerasi (100-200 kata) tentang fenomena sosial Pohuwato.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-slate-500 font-semibold text-sm" id="footerBermainText">
+                        <span>Selesaikan Menu Belajar Dulu</span>
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                </div>
+
+                <!-- Menu 3: BERLATIH -->
+                <div id="cardBerlatih" onclick="openModule('berlatih')" class="group bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 cursor-pointer flex flex-col justify-between relative overflow-hidden opacity-90">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-teal-50 rounded-full opacity-50 group-hover:scale-125 transition"></div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div id="iconBerlatih" class="w-14 h-14 rounded-2xl bg-slate-300 text-slate-700 flex items-center justify-center text-2xl shadow-md">
+                                <i class="fa-solid fa-lock" id="lockBerlatihIcon"></i>
+                            </div>
+                            <span id="badgeBerlatih" class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-lock text-slate-500"></i> TERKUNCI
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">3. Menu BERLATIH</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Asesmen formal 10 soal berjenjang (Level 1, 2, 3 HOTS) pembobotan 100 poin dengan laporan unduh PDF otomatis.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-slate-500 font-semibold text-sm" id="footerBerlatihText">
+                        <span>Selesaikan Menu Bermain Dulu</span>
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Navigation -->
+            <div class="border-t border-emerald-100 pt-4 flex justify-between items-center">
+                <button onclick="goToCoverFromMain()" class="px-5 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition">
+                    <i class="fa-solid fa-house mr-2"></i> Kembali ke Cover
+                </button>
+                <div class="text-xs text-slate-500">
+                    Progress Tersimpan Otomatis • Kurikulum Merdeka Kemenag RI
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 6. LAYER MENU 1: BELAJAR (6 SLIDE MATERI MENDALAM) -->
+        <div id="belajarModule" class="hidden flex-1 flex flex-col justify-between rounded-3xl glass-card shadow-2xl p-6 sm:p-8 relative max-h-[92vh] overflow-hidden">
+            <!-- Header -->
+            <div class="border-b border-emerald-100 pb-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <button onclick="backToMainMenu()" class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center hover:bg-emerald-200 transition">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-0.5 rounded-full">Menu Belajar</span>
+                        <h2 class="text-xl font-bold text-slate-900" id="belajarTitle">Slide 1: Pengertian Sosiologi</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">
+                        Slide <span id="currentBelajarSlide">1</span> / 6
+                    </span>
+                </div>
+            </div>
+
+            <!-- Scrollable Content Area -->
+            <div id="belajarContentArea" class="my-4 overflow-y-auto pr-2 space-y-6 flex-1">
+                <!-- Dynamic Content injected via JS -->
+            </div>
+
+            <!-- Footer Navigation & Interactive Challenge Check -->
+            <div class="border-t border-emerald-100 pt-4 flex justify-between items-center">
+                <button onclick="prevBelajarSlide()" id="prevBelajarBtn" class="px-5 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition disabled:opacity-40">
+                    <i class="fa-solid fa-chevron-left mr-2"></i> Sebelumnya
+                </button>
+                <div class="text-xs text-emerald-800 font-semibold hidden sm:block" id="belajarStatusNote">
+                    Selesaikan tantangan di bawah slide untuk lanjut
+                </div>
+                <button onclick="nextBelajarSlide()" id="nextBelajarBtn" class="px-6 py-2.5 rounded-xl bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition flex items-center gap-2">
+                    <span id="nextBelajarBtnText">Selanjutnya</span> <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- 7. LAYER MENU 2: BERMAIN (10 TANTANGAN BERSTIMULUS) -->
+        <div id="bermainModule" class="hidden flex-1 flex flex-col justify-between rounded-3xl glass-card shadow-2xl p-6 sm:p-8 relative max-h-[92vh] overflow-hidden">
+            <!-- Header -->
+            <div class="border-b border-emerald-100 pb-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <button onclick="backToMainMenu()" class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center hover:bg-amber-200 transition">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-3 py-0.5 rounded-full">Menu Bermain • Gamifikasi Literasi & Numerasi</span>
+                        <h2 class="text-xl font-bold text-slate-900">Tantangan Sosial Kabupaten Pohuwato</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full">
+                        Tantangan <span id="currentBermainNum">1</span> / 10
+                    </span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div id="bermainContentArea" class="my-4 overflow-y-auto pr-2 space-y-4 flex-1">
+                <!-- Dynamic Bermain Item -->
+            </div>
+
+            <!-- Footer -->
+            <div class="border-t border-emerald-100 pt-4 flex justify-between items-center">
+                <div class="text-xs text-slate-600 font-medium">
+                    Skor Bermain: <strong id="bermainScore" class="text-emerald-700">0</strong> / 10
+                </div>
+                <button onclick="nextBermainItem()" id="nextBermainBtn" class="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold transition flex items-center gap-2">
+                    <span id="bermainBtnText">Periksa & Lanjut</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- 8. LAYER MENU 3: BERLATIH (10 SOAL ASESMEN BERJENJANG) -->
+        <div id="berlatihModule" class="hidden flex-1 flex flex-col justify-between rounded-3xl glass-card shadow-2xl p-6 sm:p-8 relative max-h-[92vh] overflow-hidden">
+            <!-- Header -->
+            <div class="border-b border-emerald-100 pb-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <button onclick="backToMainMenu()" class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center hover:bg-teal-200 transition">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-3 py-0.5 rounded-full">Menu Berlatih • Asesmen Formal (100 Poin)</span>
+                        <h2 class="text-xl font-bold text-slate-900" id="berlatihHeaderTitle">Uji Kompetensi Sosiologi Fase E</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span id="berlatihLevelBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-800">
+                        Level 1: Dasar
+                    </span>
+                    <span class="text-sm font-bold text-teal-800 bg-teal-100 px-3 py-1 rounded-full">
+                        Soal <span id="currentBerlatihNum">1</span> / 10
+                    </span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div id="berlatihContentArea" class="my-4 overflow-y-auto pr-2 space-y-4 flex-1">
+                <!-- Dynamic Berlatih Item -->
+            </div>
+
+            <!-- Footer -->
+            <div class="border-t border-emerald-100 pt-4 flex justify-between items-center">
+                <div class="text-xs text-slate-600 font-medium">
+                    Bobot Soal Ini: <strong id="berlatihWeight" class="text-teal-700">8 Poin</strong>
+                </div>
+                <button onclick="nextBerlatihItem()" id="nextBerlatihBtn" class="px-6 py-2.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-semibold transition flex items-center gap-2">
+                    <span id="berlatihBtnText">Simpan & Lanjut</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- 9. LAPORAN HASIL BELAJAR & PDF EXPORT -->
+        <div id="reportModule" class="hidden flex-1 flex flex-col justify-between rounded-3xl glass-card shadow-2xl p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto">
+            <div id="reportPrintableArea" class="space-y-6">
+                <!-- PDF Kop / Header -->
+                <div class="border-b-2 border-emerald-800 pb-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-800 text-white flex items-center justify-center font-bold text-2xl shadow">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-900">LAPORAN HASIL BELAJAR SOSIOLOGI</h2>
+                            <p class="text-xs text-emerald-800 font-semibold">Madrasah Aliyah Negeri 1 Pohuwato • Kurikulum Berbasis Cinta</p>
+                        </div>
+                    </div>
+                    <div class="text-right text-xs text-slate-600">
+                        <p>Pengembang: <strong>Sri Rahayu Karim, S.Sos.</strong></p>
+                        <p>Email: sri_40500762196002@madrasah.kemenag.go.id</p>
+                    </div>
+                </div>
+
+                <!-- Student & Meta Info -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-emerald-50/80 p-4 rounded-2xl border border-emerald-200 text-sm">
+                    <div>
+                        <span class="text-slate-500 block text-xs">Nama Lengkap Siswa:</span>
+                        <strong class="text-slate-900 text-base" id="reportStudentName">-</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block text-xs">Kelas / Rombel:</span>
+                        <strong class="text-slate-900 text-base" id="reportStudentClass">-</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block text-xs">Tanggal Pengerjaan:</span>
+                        <strong class="text-slate-900 text-base" id="reportDate">-</strong>
+                    </div>
+                </div>
+
+                <!-- Score Summary Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <span class="text-xs font-bold uppercase text-slate-500">Skor Bermain</span>
+                        <div class="text-3xl font-extrabold text-amber-600 mt-2"><span id="reportBermainScore">0</span> / 10</div>
+                        <p class="text-xs text-slate-500 mt-1">Akurasi Gamifikasi</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <span class="text-xs font-bold uppercase text-slate-500">Nilai Akhir Berlatih</span>
+                        <div class="text-3xl font-extrabold text-emerald-700 mt-2"><span id="reportBerlatihScore">0</span> <span class="text-lg text-slate-400">/ 100</span></div>
+                        <p class="text-xs text-slate-500 mt-1">Asesmen Berjenjang</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <span class="text-xs font-bold uppercase text-slate-500">Predikat Penguasaan</span>
+                        <div class="text-2xl font-extrabold text-teal-700 mt-2" id="reportPredikat">-</div>
+                        <p class="text-xs text-slate-500 mt-1">Standar Kemenag RI</p>
+                    </div>
+                </div>
+
+                <!-- Level Mastery Breakdown -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h3 class="font-bold text-slate-900 text-base border-b pb-2">Analisis Penguasaan Level Asesmen:</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-blue-50 p-3 rounded-xl border border-blue-200">
+                            <span class="font-bold text-blue-900 block">Level 1 (Dasar)</span>
+                            <span class="text-blue-700 text-xs" id="reportLevel1">Tuntas</span>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-xl border border-teal-200">
+                            <span class="font-bold text-teal-900 block">Level 2 (Penerapan)</span>
+                            <span class="text-teal-700 text-xs" id="reportLevel2">Tuntas</span>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-xl border border-purple-200">
+                            <span class="font-bold text-purple-900 block">Level 3 (HOTS / Tinggi)</span>
+                            <span class="text-purple-700 text-xs" id="reportLevel3">Tuntas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kurikulum Berbasis Cinta & Teacher Recommendation -->
+                <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200 space-y-3 text-sm">
+                    <h3 class="font-bold text-amber-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-rose-600"></i> Catatan Kurikulum Berbasis Cinta & Rekomendasi Guru:
+                    </h3>
+                    <p class="text-slate-700 leading-relaxed" id="reportTeacherNotes">
+                        Alhamdulillah, Ananda telah menunjukkan semangat luar biasa dalam memahami sosiologi dengan hati. Pertahankan kepedulian sosial terhadap sesama warga di Kabupaten Pohuwato, jaga kelestarian lingkungan Teluk Tomini, dan teruslah menjadi agen perubahan yang solutif!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons (No Print) -->
+            <div class="mt-8 pt-4 border-t border-emerald-100 flex flex-wrap gap-4 justify-between items-center no-print">
+                <button onclick="backToMainMenu()" class="px-5 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition">
+                    <i class="fa-solid fa-house mr-2"></i> Kembali ke Menu Utama
+                </button>
+                <div class="flex gap-3">
+                    <button onclick="downloadPDF()" class="px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold shadow-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-file-pdf"></i> Unduh / Cetak Laporan PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUSTOM MODAL DIALOG (REPLACEMENT FOR ALERT) -->
+        <div id="customModal" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm hidden items-center justify-center p-4">
+            <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-emerald-100 text-center space-y-4">
+                <div id="modalIcon" class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-inner">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 id="modalTitle" class="text-xl font-bold text-slate-900">Perhatian</h3>
+                <p id="modalMessage" class="text-sm text-slate-600 leading-relaxed">Pesan pemberitahuan sistem...</p>
+                <div class="pt-2">
+                    <button onclick="closeCustomModal()" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl shadow transition">
+                        Mengerti / Lanjutkan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // =========================================================================
+        // DEKLARASI TAUTAN WEB APP GOOGLE APPS SCRIPT
+        // =========================================================================
+        const GAS_URL = "URL_GAS_ANDA_DISINI";
+
+        // --- GLOBAL STATE ---
+        let state = {
+            studentName: "",
+            studentClass: "",
+            currentGuideSlide: 1,
+            belajarSlide: 1,
+            belajarCompleted: [false, false, false, false, false, false],
+            bermainIndex: 0,
+            bermainScore: 0,
+            bermainAnswers: {},
+            berlatihIndex: 0,
+            berlatihScore: 0,
+            berlatihAnswers: {},
+            menuBermainUnlocked: false,
+            menuBerlatihUnlocked: false
+        };
+
+        // --- SPLASH SCREEN TIMEOUT ---
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splashScreen');
+                const container = document.getElementById('appContainer');
+                splash.style.opacity = '0';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    container.style.opacity = '1';
+                    // Mengirimkan database soal ke Google Sheets saat aplikasi dimuat
+                    syncQuestionsToGAS();
+                }, 700);
+            }, 1800);
+        });
+
+        // --- MODAL HELPERS ---
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.getElementById(id).classList.remove('flex');
+        }
+        function showCustomModal(title, message, type = 'warning') {
+            const modal = document.getElementById('customModal');
+            const titleEl = document.getElementById('modalTitle');
+            const msgEl = document.getElementById('modalMessage');
+            const iconEl = document.getElementById('modalIcon');
+            
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+            
+            if (type === 'lock') {
+                iconEl.className = "w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-inner";
+                iconEl.innerHTML = '<i class="fa-solid fa-lock"></i>';
+            } else if (type === 'success') {
+                iconEl.className = "w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-inner";
+                iconEl.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+            } else {
+                iconEl.className = "w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-inner";
+                iconEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+            }
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        function closeCustomModal() {
+            document.getElementById('customModal').classList.add('hidden');
+            document.getElementById('customModal').classList.remove('flex');
+        }
+
+        // --- NAVIGATION FLOW ---
+        function goToIdentityForm() {
+            document.getElementById('coverPage').classList.add('hidden');
+            document.getElementById('identityPage').classList.remove('hidden');
+        }
+
+        function handleIdentitySubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('studentName').value.trim();
+            const cls = document.getElementById('studentClass').value.trim();
+            if (!name || !cls) {
+                showCustomModal("Validasi Data", "Mohon isi Nama Lengkap dan Kelas dengan benar.");
+                return;
+            }
+            state.studentName = name;
+            state.studentClass = cls;
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('profileStudentName').textContent = name;
+
+            document.getElementById('identityPage').classList.add('hidden');
+            document.getElementById('guidePage').classList.remove('hidden');
+        }
+
+        // GUIDE SLIDES
+        function nextGuideSlide() {
+            if (state.currentGuideSlide < 3) {
+                state.currentGuideSlide++;
+                updateGuideView();
+            } else {
+                // Enter Main Menu
+                document.getElementById('guidePage').classList.add('hidden');
+                document.getElementById('mainMenuPage').classList.remove('hidden');
+            }
+        }
+        function prevGuideSlide() {
+            if (state.currentGuideSlide > 1) {
+                state.currentGuideSlide--;
+                updateGuideView();
+            }
+        }
+        function updateGuideView() {
+            document.getElementById('currentGuideSlide').textContent = state.currentGuideSlide;
+            document.querySelectorAll('.guide-slide').forEach(el => {
+                if (el.getAttribute('data-slide') == state.currentGuideSlide) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+            document.querySelectorAll('.indicator-dot').forEach((dot, idx) => {
+                if (idx + 1 === state.currentGuideSlide) {
+                    dot.className = "w-3 h-3 rounded-full bg-emerald-600 indicator-dot";
+                } else {
+                    dot.className = "w-3 h-3 rounded-full bg-slate-300 indicator-dot";
+                }
+            });
+            const nextBtnText = document.getElementById('nextGuideText');
+            if (state.currentGuideSlide === 3) {
+                nextBtnText.textContent = "Masuk Menu Utama";
+            } else {
+                nextBtnText.textContent = "Selanjutnya";
+            }
+            document.getElementById('prevGuideBtn').disabled = state.currentGuideSlide === 1;
+        }
+
+        function goToCoverFromMain() {
+            document.getElementById('mainMenuPage').classList.add('hidden');
+            document.getElementById('coverPage').classList.remove('hidden');
+        }
+
+        function backToMainMenu() {
+            document.getElementById('belajarModule').classList.add('hidden');
+            document.getElementById('bermainModule').classList.add('hidden');
+            document.getElementById('berlatihModule').classList.add('hidden');
+            document.getElementById('reportModule').classList.add('hidden');
+            document.getElementById('mainMenuPage').classList.remove('hidden');
+            updateMenuLockStatus();
+        }
+
+        function updateMenuLockStatus() {
+            // Check Bermain
+            if (state.menuBermainUnlocked) {
+                const card = document.getElementById('cardBermain');
+                card.classList.remove('opacity-90', 'border-slate-200');
+                card.classList.add('border-amber-500');
+                document.getElementById('iconBermain').className = "w-14 h-14 rounded-2xl bg-amber-600 text-white flex items-center justify-center text-2xl shadow-md";
+                document.getElementById('lockBermainIcon').className = "fa-solid fa-gamepad";
+                document.getElementById('badgeBermain').className = "bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1";
+                document.getElementById('badgeBermain').innerHTML = '<i class="fa-solid fa-lock-open text-amber-600"></i> TERBUKA';
+                document.getElementById('footerBermainText').innerHTML = '<span>Mulai Tantangan</span><i class="fa-solid fa-arrow-right text-amber-600"></i>';
+            }
+
+            // Check Berlatih
+            if (state.menuBerlatihUnlocked) {
+                const card = document.getElementById('cardBerlatih');
+                card.classList.remove('opacity-90', 'border-slate-200');
+                card.classList.add('border-teal-500');
+                document.getElementById('iconBerlatih').className = "w-14 h-14 rounded-2xl bg-teal-700 text-white flex items-center justify-center text-2xl shadow-md";
+                document.getElementById('lockBerlatihIcon').className = "fa-solid fa-award";
+                document.getElementById('badgeBerlatih').className = "bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1";
+                document.getElementById('badgeBerlatih').innerHTML = '<i class="fa-solid fa-lock-open text-teal-600"></i> TERBUKA';
+                document.getElementById('footerBerlatihText').innerHTML = '<span>Mulai Asesmen</span><i class="fa-solid fa-arrow-right text-teal-600"></i>';
+            }
+        }
+
+        function openModule(mod) {
+            if (mod === 'belajar') {
+                document.getElementById('mainMenuPage').classList.add('hidden');
+                document.getElementById('belajarModule').classList.remove('hidden');
+                loadBelajarSlide(state.belajarSlide);
+            } else if (mod === 'bermain') {
+                if (!state.menuBermainUnlocked) {
+                    showCustomModal("Menu Masih Terkunci", "Selesaikan seluruh 6 Slide Materi di Menu BELAJAR terlebih dahulu untuk membuka tantangan Menu BERMAIN.", "lock");
+                    return;
+                }
+                document.getElementById('mainMenuPage').classList.add('hidden');
+                document.getElementById('bermainModule').classList.remove('hidden');
+                loadBermainItem(state.bermainIndex);
+            } else if (mod === 'berlatih') {
+                if (!state.menuBerlatihUnlocked) {
+                    showCustomModal("Menu Masih Terkunci", "Selesaikan seluruh 10 Tantangan di Menu BERMAIN terlebih dahulu untuk membuka Asesmen Menu BERLATIH.", "lock");
+                    return;
+                }
+                document.getElementById('mainMenuPage').classList.add('hidden');
+                document.getElementById('berlatihModule').classList.remove('hidden');
+                loadBerlatihItem(state.berlatihIndex);
+            }
+        }
+
+        // --- MODULE 1: BELAJAR (6 SLIDES) ---
+        const belajarData = [
+            {
+                title: "Slide 1: Pengertian Sosiologi & Akar Kata",
+                content: `
+                    <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <h4 class="font-bold text-emerald-900 text-lg mb-2"><i class="fa-solid fa-book-open text-emerald-700"></i> 1. Pengertian Sosiologi Secara Etimologis</h4>
+                            <p>Secara etimologis, istilah <strong>Sosiologi</strong> berasal dari gabungan dua kata dari bahasa yang berbeda:</p>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li><strong>Socius</strong> (Bahasa Latin): Berarti kawan, teman, atau masyarakat.</li>
+                                <li><strong>Logos</strong> (Bahasa Yunani): Berarti ilmu pengetahuan, berbicara tentang, atau studi.</li>
+                            </ul>
+                            <p class="mt-2 font-medium text-emerald-900">Jadi, Sosiologi adalah ilmu pengetahuan yang mempelajari masyarakat.</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                            <h4 class="font-bold text-slate-900 text-base">Pandangan Tokoh Sosiologi Klasik & Modern:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                                <div class="bg-slate-50 p-3 rounded-xl">
+                                    <strong class="text-emerald-800 block font-bold">Auguste Comte (Bapak Sosiologi)</strong>
+                                    <span class="text-slate-600">Sosiologi adalah ilmu positif tentang masyarakat yang mempelajari fakta-fakta sosial secara objektif.</span>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl">
+                                    <strong class="text-emerald-800 block font-bold">Emile Durkheim</strong>
+                                    <span class="text-slate-600">Mempelajari fakta sosial (cara bertindak, berpikir, merasa yang ada di luar individu dan memaksa).</span>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl">
+                                    <strong class="text-emerald-800 block font-bold">Max Weber</strong>
+                                    <strong class="text-slate-600">Tindakan sosial yang memiliki makna subyektif dan diarahkan pada perilaku orang lain.</strong>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-xl">
+                                    <strong class="text-emerald-800 block font-bold">Selo Soemardjan & Soelaiman Soemardi</strong>
+                                    <span class="text-slate-600">Ilmu yang mempelajari struktur sosial, proses sosial, dan perubahan sosial di masyarakat.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-teal-50 border-l-4 border-teal-600 p-4 rounded-r-xl">
+                            <h4 class="font-bold text-teal-900 mb-1"><i class="fa-solid fa-map-location-dot text-teal-700"></i> Konteks Lokal Kabupaten Pohuwato:</h4>
+                            <p>Di Kabupaten Pohuwato (Gorontalo), masyarakat pesisir Teluk Tomini dan daerah pegunungan (seperti di Marisa, Popayato, Paguat) hidup dalam ikatan kekerabatan erat (*Pohala'a* / kekeluargaan) serta tradisi gotong royong (*Bufayato*) yang menjadi objek kajian sosiologis nyata.</p>
+                        </div>
+
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+                            <h4 class="font-bold text-amber-900 mb-1"><i class="fa-solid fa-heart text-rose-600"></i> Integrasi Kurikulum Berbasis Cinta & Ayat Al-Qur'an:</h4>
+                            <p class="font-amiri text-right text-lg text-slate-900 my-1" dir="rtl">يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوباً وَقَبَائِلَ لِتَعَارَفُوا</p>
+                            <p class="text-xs text-slate-600">Sosiologi mengajarkan kita untuk saling mengenal (*lita'arafū*) dengan penuh kasih sayang tanpa memandang sekat suku atau wilayah di Pohuwato <strong>(QS. Al-Hujurat: 13)</strong>.</p>
+                        </div>
+                    </div>
+                `,
+                challenge: {
+                    question: "Tantangan Pemantik: Apa arti kata 'Socius' secara etimologis dalam Sosiologi?",
+                    options: ["Ilmu Pengetahuan", "Kawan / Teman / Masyarakat", "Perubahan Sosial"],
+                    answer: 1,
+                    feedback: "Tepat sekali! 'Socius' berarti kawan atau masyarakat."
+                }
+            },
+            {
+                title: "Slide 2: Sifat dan Hakikat Sosiologi",
+                content: `
+                    <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <h4 class="font-bold text-emerald-900 text-lg mb-2"><i class="fa-solid fa-atom text-emerald-700"></i> 4 Sifat Utama Sosiologi sebagai Ilmu:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Empiris:</strong> Didasarkan pada observasi dan kenyataan di lapangan, bukan khayalan/spekulasi semata.</li>
+                                <li><strong>Teoritis:</strong> Menyusun abstraksi dan kerangka berpikir dari hasil observasi untuk menjelaskan sebab-akibat.</li>
+                                <li><strong>Kumulatif:</strong> Teori sosiologi terus berkembang, diperbaiki, dan disempurnakan dari teori sebelumnya.</li>
+                                <li><strong>Non-Etis:</strong> Sosiologi tidak menilai baik atau buruknya suatu fakta sosial, melainkan menjelaskannya secara objektif apa adanya.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-teal-50 border-l-4 border-teal-600 p-4 rounded-r-xl">
+                            <h4 class="font-bold text-teal-900 mb-1"><i class="fa-solid fa-leaf text-teal-700"></i> Refleksi Kurikulum Berbasis Cinta & Lingkungan Pohuwato:</h4>
+                            <p>Sifat non-etis dan empiris mengajarkan kita untuk mengamati kondisi lingkungan pesisir Teluk Tomini secara objektif tanpa prasangka, serta menumbuhkan cinta terhadap kelestarian alam dan sesama warga.</p>
+                        </div>
+                    </div>
+                `,
+                challenge: {
+                    question: "Tantangan Pemantik: Sifat sosiologi yang berarti didasarkan pada kenyataan dan pengamatan nyata di lapangan disebut...",
+                    options: ["Kumulatif", "Empiris", "Non-Etis"],
+                    answer: 1,
+                    feedback: "Benar! Empiris berarti berdasar pada observasi dan kenyataan nyata."
+                }
+            },
+            {
+                title: "Slide 3: Tujuan dan Kegunaan Sosiologi",
+                content: `
+                    <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <h4 class="font-bold text-emerald-900 text-lg mb-2"><i class="fa-solid fa-bullseye text-emerald-700"></i> Tujuan & Kegunaan Praktis Sosiologi</h4>
+                            <p>Sosiologi memiliki kegunaan besar dalam kehidupan nyata, di antaranya:</p>
+                            <ul class="list-disc pl-5 mt-2 space-y-2">
+                                <li><strong>Perencanaan Sosial:</strong> Membantu pemerintah merancang pembangunan yang tepat sasaran sesuai karakteristik warga Pohuwato.</li>
+                                <li><strong>Penelitian Sosial:</strong> Mengidentifikasi akar masalah sosial secara mendalam (misal: penanggulangan kemiskinan atau pendidikan).</li>
+                                <li><strong>Pemecahan Masalah Sosial:</strong> Merumuskan solusi berkelanjutan untuk konflik atau kerusakan lingkungan.</li>
+                                <li><strong>Peningkatan Kesadaran Sosial:</strong> Menumbuhkan empati, toleransi, dan kepedulian antarsesama manusia.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                challenge: {
+                    question: "Tantangan Pemantik: Mengapa penelitian sosiologi penting dalam perencanaan sosial di daerah seperti Pohuwato?",
+                    options: ["Agar program pembangunan tepat sasaran sesuai kebutuhan masyarakat", "Hanya untuk syarat formal administrasi", "Untuk membatasi aktivitas warga"],
+                    answer: 0,
+                    feedback: "Tepat! Perencanaan sosial berbasis sosiologi memastikan program bermanfaat optimal bagi warga."
+                }
+            },
+            {
+                title: "Slide 4: Karakteristik Sosiologi",
+                content: `
+                    <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <h4 class="font-bold text-emerald-900 text-lg mb-2"><i class="fa-solid fa-glasses text-emerald-700"></i> Karakteristik Khas Sosiologi:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Berfokus pada Gejala Umum (Generalisasi):</strong> Mempelajari pola perilaku yang berulang dalam kelompok masyarakat.</li>
+                                <li><strong>Hubungan Timbal Balik:</strong> Menelaah bagaimana satu aspek sosial memengaruhi aspek lainnya (misal: ekonomi memengaruhi interaksi).</li>
+                                <li><strong>Objektivitas & Multiperspektif:</strong> Melihat permasalahan sosial dari berbagai sudut pandang secara netral dan analitis.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                challenge: {
+                    question: "Tantangan Pemantik: Karakteristik sosiologi yang melihat pola perilaku yang berulang dalam kelompok disebut...",
+                    options: ["Generalisasi / Gejala Umum", "Pengamatan Individu Terisolasi", "Spekulasi Kosmologis"],
+                    answer: 0,
+                    feedback: "Benar! Sosiologi meneliti gejala umum dan pola berulang dalam masyarakat."
+                }
+            },
+            {
+                title: "Slide 5: Konsep-Konsep Dasar Sosiologi",
+                content: `
+                    <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <h4 class="font-bold text-emerald-900 text-lg mb-2"><i class="fa-solid fa-cubes text-emerald-700"></i> Peta Konsep Sosial:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                                <div class="bg-white p-3 rounded-xl border"><strong>Masyarakat:</strong> Sekelompok orang yang hidup bersama dan berbudaya.</div>
+                                <div class="bg-white p-3 rounded-xl border"><strong>Struktur Sosial:</strong> Tatanan unsur sosial (kelompok, status, kelas).</div>
+                                <div class="bg-white p-3 rounded-xl border"><strong>Status & Peran:</strong> Kedudukan seseorang dan harapan perilakunya.</div>
+                                <div class="bg-white p-3 rounded-xl border"><strong>Nilai & Norma:</strong> Ukuran kebaikan dan aturan konkret masyarakat.</div>
+                                <div class="bg-white p-3 rounded-xl border"><strong>Sosialisasi:</strong> Proses belajar nilai dan norma sepanjang hayat.</div>
+                                <div class="bg-white p-3 rounded-xl border"><strong>Kontrol Sosial:</strong> Cara masyarakat menertibkan anggotanya.</div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                challenge: {
+                    question: "Tantangan Pemantik: Aturan atau pedoman konkret yang mengatur perilaku anggota masyarakat berdasarkan nilai disebut...",
+                    options: ["Norma Sosial", "Status Sosial", "Institusi Sosial"],
+                    answer: 0,
+                    feedback: "Tepat sekali! Norma sosial adalah aturan konkret dalam masyarakat."
+                }
+            },
+            {
+                title: "Slide 6: Tindakan dan Interaksi Sosial",
+                content: `
+                    <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <h4 class="font-bold text-emerald-900 text-lg mb-2"><i class="fa-solid fa-handshake text-emerald-700"></i> Tindakan & Interaksi Sosial:</h4>
+                            <p>Max Weber membagi <strong>Tindakan Sosial</strong> menjadi 4 tipe:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li><strong>Rasional Instrumental:</strong> Berorientasi efisiensi pencapaian tujuan.</li>
+                                <li><strong>Rasional Nilai:</strong> Didasarkan pada keyakinan nilai moral/agama (sangat lekat dengan Kurikulum Berbasis Cinta).</li>
+                                <li><strong>Afektif:</strong> Didasarkan pada perasaan atau emosi spontan.</li>
+                                <li><strong>Tradisional:</strong> Berdasarkan kebiasaan turun-temurun.</li>
+                            </ul>
+                            <p class="mt-3"><strong>Interaksi Sosial</strong> terbagi menjadi bentuk <em>Asosiatif</em> (Kerjasama, Akomodasi, Asimilasi, Akulturasi) dan <em>Disosiatif</em> (Persaingan, Kontravensi, Konflik).</p>
+                        </div>
+                    </div>
+                `,
+                challenge: {
+                    question: "Tantangan Pemantik: Tindakan sosial yang dilakukan berdasarkan keyakinan nilai moral atau agama tanpa pamrih disebut...",
+                    options: ["Tindakan Rasional Nilai", "Tindakan Afektif", "Tindakan Tradisional"],
+                    answer: 0,
+                    feedback: "Hebat! Tindakan rasional nilai didasarkan pada prinsip moral dan kebaikan sejati."
+                }
+            }
+        ];
+
+        function loadBelajarSlide(slideNum) {
+            state.belajarSlide = slideNum;
+            document.getElementById('currentBelajarSlide').textContent = slideNum;
+            document.getElementById('belajarTitle').textContent = belajarData[slideNum - 1].title;
+
+            const area = document.getElementById('belajarContentArea');
+            const data = belajarData[slideNum - 1];
+
+            let html = data.content;
+            const completed = state.belajarCompleted[slideNum - 1];
+
+            // Interactive Challenge box
+            html += `
+                <div class="bg-gradient-to-r from-emerald-100 to-teal-50 p-5 rounded-2xl border border-emerald-300 shadow-sm mt-6 space-y-3">
+                    <h5 class="font-bold text-emerald-900 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-puzzle-piece text-emerald-700"></i> ${data.challenge.question}
+                    </h5>
+                    <div id="challengeOptions" class="space-y-2">
+            `;
+
+            data.challenge.options.forEach((opt, idx) => {
+                const isSelected = completed && window[`belajar_s${slideNum}_choice`] === idx;
+                const btnClass = completed 
+                    ? (idx === data.challenge.answer ? "bg-emerald-600 text-white font-bold" : "bg-white text-slate-700 opacity-60")
+                    : "bg-white hover:bg-emerald-50 text-slate-800 border border-emerald-200";
+                
+                html += `
+                    <button onclick="submitBelajarChallenge(${slideNum}, ${idx})" class="w-full text-left p-3 rounded-xl transition text-sm flex items-center justify-between ${btnClass}">
+                        <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                        ${completed && idx === data.challenge.answer ? '<i class="fa-solid fa-check-circle text-white"></i>' : ''}
+                    </button>
+                `;
+            });
+
+            html += `</div>`;
+            if (completed) {
+                html += `<div id="challengeFeedback" class="text-xs font-semibold text-emerald-800 bg-emerald-200/80 p-3 rounded-xl flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-700"></i> ${data.challenge.feedback} (Slide Selesai!)</div>`;
+            } else {
+                html += `<div id="challengeFeedback" class="text-xs text-slate-600 italic">Pilih salah satu jawaban di atas untuk menyelesaikan slide ini.</div>`;
+            }
+            html += `</div>`;
+
+            area.innerHTML = html;
+
+            document.getElementById('prevBelajarBtn').disabled = slideNum === 1;
+            const nextBtnText = document.getElementById('nextBelajarBtnText');
+            if (slideNum === 6) {
+                nextBtnText.textContent = "Selesai & Buka Menu Bermain";
+            } else {
+                nextBtnText.textContent = "Selanjutnya";
+            }
+        }
+
+        function submitBelajarChallenge(slideNum, idx) {
+            window[`belajar_s${slideNum}_choice`] = idx;
+            const data = belajarData[slideNum - 1];
+            if (idx === data.challenge.answer) {
+                state.belajarCompleted[slideNum - 1] = true;
+                loadBelajarSlide(slideNum);
+                showCustomModal("Benar Sekali!", data.challenge.feedback, "success");
+            } else {
+                showCustomModal("Kurang Tepat", "Jawaban Anda belum tepat. Silakan coba opsi lainnya.", "warning");
+            }
+        }
+
+        function nextBelajarSlide() {
+            if (!state.belajarCompleted[state.belajarSlide - 1]) {
+                showCustomModal("Tantangan Belum Selesai", "Selesaikan tantangan interaktif di bagian bawah slide terlebih dahulu agar pemahaman Anda matang.");
+                return;
+            }
+
+            if (state.belajarSlide < 6) {
+                state.belajarSlide++;
+                loadBelajarSlide(state.belajarSlide);
+            } else {
+                // All 6 slides completed! Unlock Menu Bermain
+                state.menuBermainUnlocked = true;
+                showCustomModal("Selamat!", "Anda telah menyelesaikan seluruh 6 Slide Menu Belajar. Menu BERMAIN kini resmi terbuka!", "success");
+                backToMainMenu();
+            }
+        }
+
+        function prevBelajarSlide() {
+            if (state.belajarSlide > 1) {
+                state.belajarSlide--;
+                loadBelajarSlide(state.belajarSlide);
+            }
+        }
+
+
+        // --- MODULE 2: BERMAIN (10 GAMIFIED CHALLENGES) ---
+        const bermainData = [
+            {
+                type: "mc",
+                stimulus: "Di wilayah pesisir Teluk Tomini, Kabupaten Pohuwato, para nelayan tradisional sering kali mengadakan tradisi gotong royong saat membangun perahu atau melaut bersama (*Bufayato*). Fenomena ini menunjukkan bahwa manusia tidak dapat hidup sendiri dan selalu terikat dalam hubungan timbal balik yang harmonis.",
+                question: "Berdasarkan stimulus di atas, fenomena gotong royong nelayan Pohuwato mencerminkan sifat dasar manusia sebagai...",
+                options: ["Makhluk ekonomi yang murni mencari laba", "Makhluk sosial yang saling berinteraksi dan bergantung", "Makhluk individu yang mandiri tanpa orang lain"],
+                answer: 1
+            },
+            {
+                type: "matching",
+                stimulus: "Dalam memahami masyarakat, sosiologi memiliki sifat-sifat khusus yang membedakannya dengan ilmu alam. Sifat-sifat tersebut meliputi empiris, teoritis, kumulatif, dan non-etis. Sebagai siswa MAN 1 Pohuwato, penting memahami bahwa sosiologi menjelaskan fakta sosial secara objektif tanpa menghakimi.",
+                question: "Pasangkan sifat sosiologi dengan definisi yang tepat:",
+                pairs: [
+                    { term: "Empiris", desc: "Didasarkan pada kenyataan & observasi nyata" },
+                    { term: "Teoritis", desc: "Menyusun abstraksi & kerangka berpikir" },
+                    { term: "Non-Etis", desc: "Menjelaskan fakta tanpa menghakimi benar/salah" }
+                ]
+            },
+            {
+                type: "mc",
+                stimulus: "Pemerintah Kabupaten Pohuwato merencanakan program pembangunan pasar tradisional baru di kawasan Marisa. Sebelum pembangunan dimulai, seorang sosiolog dilibatkan untuk meneliti kebiasaan belanja dan struktur sosial warga setempat agar program tidak salah sasaran.",
+                question: "Peran sosiologi dalam kasus pembangunan pasar di Pohuwato tersebut berfungsi sebagai...",
+                options: ["Perencanaan sosial (social planning)", "Pemicu konflik horizontal antarpedagang", "Alat penegakan hukum pidana"],
+                answer: 0
+            },
+            {
+                type: "order",
+                stimulus: "Proses interaksi sosial di masyarakat berjalan melalui tahapan tertentu. Mulai dari adanya kontak sosial fisik maupun non-fisik, dilanjutkan dengan komunikasi yang bermakna, hingga terbentuknya keteraturan sosial atau integrasi.",
+                question: "Urutkan tahapan terjadinya interaksi sosial dengan benar dari awal hingga akhir:",
+                steps: ["Kontak Sosial", "Komunikasi", "Terbentuknya Interaksi / Hubungan Sosial"]
+            },
+            {
+                type: "mc",
+                stimulus: "Dua kelompok pemuda di Pohuwato yang sempat berselisih paham akibat kesalahpahaman di media sosial akhirnya dipertemukan oleh tokoh adat dan kepala desa untuk mencapai kesepakatan damai tanpa melalui jalur pengadilan.",
+                question: "Bentuk akomodasi penyelesaian konflik melalui bantuan pihak ketiga tanpa keputusan yang mengikat disebut...",
+                options: ["Mediasi", "Arbitrasi", "Koersi"],
+                answer: 0
+            },
+            {
+                type: "mc",
+                stimulus: "Max Weber mengklasifikasikan tindakan manusia ke dalam empat tipe. Ketika seorang siswa MAN 1 Pohuwato rajin belajar dan berpuasa sunnah semata-mata karena keyakinan agama dan nilai moral, tanpa memandang keuntungan materi...",
+                question: "Tindakan di atas termasuk dalam kategori tindakan sosial...",
+                options: ["Tindakan Rasional Nilai (Wertrational)", "Tindakan Rasional Instrumental", "Tindakan Afektif"],
+                answer: 0
+            },
+            {
+                type: "mc",
+                stimulus: "Proses perpaduan dua kebudayaan atau lebih di mana unsur kebudayaan asing diterima dan diadaptasikan ke dalam kebudayaan asli tanpa menghilangkan ciri khas kebudayaan asli disebut akulturasi.",
+                question: "Manakah contoh akulturasi budaya yang sering dijumpai dalam kehidupan masyarakat Gorontalo?",
+                options: ["Penggunaan teknologi modern dalam upacara adat perkawinan lokal", "Hilangnya seluruh bahasa daerah karena bahasa asing", "Pelarangan total terhadap tradisi lama"],
+                answer: 0
+            },
+            {
+                type: "mc",
+                stimulus: "Dalam struktur sosial di lingkungan madrasah, terdapat status yang diperoleh seseorang sejak lahir (seperti keturunan bangsawan) dan status yang diraih melalui usaha kerja keras (seperti menjadi juara kelas atau sarjana).",
+                question: "Status sosial yang diperoleh seseorang melalui usaha dan kerja keras disebut...",
+                options: ["Achieved Status", "Ascribed Status", "Assigned Status"],
+                answer: 0
+            },
+            {
+                type: "mc",
+                stimulus: "Interaksi sosial disosiatif adalah bentuk interaksi yang mengarah pada perpecahan atau pertentangan. Contoh bentuk interaksi disosiatif meliputi persaingan, kontravensi, dan konflik kekerasan.",
+                question: "Manakah di bawah ini yang merupakan bentuk interaksi sosial asosiatif (mendekatkan)?",
+                options: ["Kerjasama dan Akomodasi", "Konflik dan Tawuran", "Persaingan tidak sehat"],
+                answer: 0
+            },
+            {
+                type: "mc",
+                stimulus: "Kurikulum Berbasis Cinta mengajarkan kita bahwa sosiologi bukan sekadar hafalan teori di kelas, melainkan panggilan jiwa untuk merajut solidaritas, empati, dan kepedulian terhadap sesama manusia dan alam ciptaan Allah SWT.",
+                question: "Apa esensi utama pembelajaran Sosiologi berbasis Cinta di Madrasah Aliyah?",
+                options: ["Membangun kepekaan sosial dan kasih sayang dalam masyarakat", "Mendorong persaingan bebas tanpa batas", "Mencari keuntungan pribadi semata"],
+                answer: 0
+            }
+        ];
+
+        function loadBermainItem(index) {
+            state.bermainIndex = index;
+            document.getElementById('currentBermainNum').textContent = index + 1;
+            document.getElementById('bermainScore').textContent = state.bermainScore;
+
+            const item = bermainData[index];
+            const area = document.getElementById('bermainContentArea');
+
+            let html = `
+                <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-200 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <strong class="text-amber-900 block mb-1"><i class="fa-solid fa-book-open-reader"></i> Stimulus Literasi Kontekstual:</strong>
+                    ${item.stimulus}
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-900 text-base">${item.question}</h4>
+            `;
+
+            if (item.type === 'mc') {
+                html += `<div class="space-y-2 mt-3" id="bermainOptionsContainer">`;
+                item.options.forEach((opt, idx) => {
+                    html += `
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-amber-50 cursor-pointer transition text-sm">
+                            <input type="radio" name="bermain_mc" value="${idx}" class="text-amber-600 focus:ring-amber-500 h-4 w-4">
+                            <span class="text-slate-800 font-medium">${String.fromCharCode(65 + idx)}. ${opt}</span>
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+            } else if (item.type === 'matching') {
+                html += `<div class="space-y-2 text-xs sm:text-sm text-slate-600">`;
+                item.pairs.forEach((p, idx) => {
+                    html += `
+                        <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center border">
+                            <span><strong>${p.term}</strong></span>
+                            <span class="text-emerald-700 font-semibold">${p.desc}</span>
+                        </div>
+                    `;
+                });
+                html += `<p class="text-xs text-amber-700 italic mt-2">Klik tombol periksa untuk mengonfirmasi pemahaman konsep.</p></div>`;
+            } else if (item.type === 'order') {
+                html += `<div class="space-y-2 text-xs sm:text-sm text-slate-700">`;
+                item.steps.forEach((st, idx) => {
+                    html += `<div class="bg-slate-50 p-3 rounded-xl border flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs">${idx + 1}</span> <span>${st}</span></div>`;
+                });
+                html += `</div>`;
+            }
+
+            html += `</div>`;
+            area.innerHTML = html;
+
+            const btnText = document.getElementById('bermainBtnText');
+            if (index === 9) {
+                btnText.textContent = "Selesaikan Bermain & Buka Berlatih";
+            } else {
+                btnText.textContent = "Periksa & Lanjut";
+            }
+        }
+
+        function nextBermainItem() {
+            const item = bermainData[state.bermainIndex];
+
+            if (item.type === 'mc') {
+                const selected = document.querySelector('input[name="bermain_mc"]:checked');
+                if (!selected) {
+                    showCustomModal("Pilih Jawaban", "Silakan pilih salah satu opsi jawaban sebelum melanjutkan.");
+                    return;
+                }
+                const chosenIdx = parseInt(selected.value);
+                state.bermainAnswers[state.bermainIndex] = {
+                    chosen: chosenIdx,
+                    isCorrect: chosenIdx === item.answer
+                };
+                if (chosenIdx === item.answer) {
+                    state.bermainScore++;
+                }
+            } else {
+                // Untuk matching/order dianggap tuntas
+                state.bermainAnswers[state.bermainIndex] = {
+                    chosen: "Tuntas",
+                    isCorrect: true
+                };
+            }
+
+            if (state.bermainIndex < 9) {
+                state.bermainIndex++;
+                loadBermainItem(state.bermainIndex);
+            } else {
+                // Completed Bermain! Unlock Berlatih
+                state.menuBerlatihUnlocked = true;
+                showCustomModal("Luar Biasa!", `Tantangan Bermain selesai! Skor Akurasi Anda: ${state.bermainScore}/10. Menu BERLATIH kini resmi terbuka!`, "success");
+                backToMainMenu();
+            }
+        }
+
+
+        // --- MODULE 3: BERLATIH (10 LEVEL ASESMEN SOAL) ---
+        const berlatihData = [
+            // Level 1: Dasar (1-3)
+            {
+                level: 1,
+                weight: 8,
+                title: "Soal 1 (Level 1: Dasar)",
+                stimulus: "Sosiologi lahir sebagai ilmu pengetahuan modern di Eropa akibat terjadinya perubahan sosial besar-besaran pasca Revolusi Industri dan Revolusi Prancis. Perubahan struktur masyarakat agraris menjadi masyarakat industri menimbulkan berbagai persoalan baru.",
+                question: "Apakah arti utama dari istilah 'Socius' dalam akar kata etimologis Sosiologi?",
+                options: ["Kawan / Teman / Masyarakat", "Pemerintahan dan Kekuasaan", "Perubahan Alam Semesta"],
+                answer: 0
+            },
+            {
+                level: 1,
+                weight: 8,
+                title: "Soal 2 (Level 1: Dasar)",
+                stimulus: "Dalam mengkaji fenomena masyarakat, sosiolog tidak boleh berasumsi atau menghakimi baik buruknya perilaku subjek yang diteliti, melainkan harus mendeskripsikan secara objektif.",
+                question: "Sifat sosiologi yang menjelaskan fakta sosial apa adanya tanpa menilai benar atau salah disebut...",
+                options: ["Non-Etis", "Kumulatif", "Empiris"],
+                answer: 0
+            },
+            {
+                level: 1,
+                weight: 8,
+                title: "Soal 3 (Level 1: Dasar)",
+                stimulus: "Di MAN 1 Pohuwato, interaksi antarwarga madrasah terjalin erat melalui kegiatan keagamaan, gotong royong kebersihan lingkungan, serta proses pembelajaran di kelas.",
+                question: "Syarat utama terjadinya interaksi sosial di dalam masyarakat adalah...",
+                options: ["Kontak sosial dan komunikasi", "Persaingan dan konflik terbuka", "Isolasi sosial mutlak"],
+                answer: 0
+            },
+            // Level 2: Sedang / Aplikasi (4-7)
+            {
+                level: 2,
+                weight: 10,
+                title: "Soal 4 (Level 2: Aplikasi)",
+                stimulus: "Pemerintah daerah di Kabupaten Pohuwato merancang program pemberdayaan ekonomi nelayan di kawasan Teluk Tomini. Sebelum program berjalan, sosiolog dilibatkan untuk meneliti struktur sosial kelompok nelayan agar bantuan tepat sasaran.",
+                question: "Kegunaan sosiologi yang paling dominan dalam ilustrasi di atas adalah...",
+                options: ["Perencanaan sosial (social planning)", "Pemicu kontravensi antarwarga", "Pelanggaran norma kesopanan"],
+                answer: 0
+            },
+            {
+                level: 2,
+                weight: 10,
+                title: "Soal 5 (Level 2: Aplikasi)",
+                stimulus: "Max Weber membedakan tindakan sosial menjadi empat jenis. Ketika seorang warga menolong korban bencana alam di Pohuwato karena didorong oleh panggilan keyakinan agama dan nilai kemanusiaan murni...",
+                question: "Tindakan sosial tersebut diklasifikasikan sebagai...",
+                options: ["Tindakan Rasional Nilai", "Tindakan Rasional Instrumental", "Tindakan Afektif"],
+                answer: 0
+            },
+            {
+                level: 2,
+                weight: 10,
+                title: "Soal 6 (Level 2: Aplikasi)",
+                stimulus: "Dua kelompok warga yang berbeda suku di suatu pemukiman sempat mengalami ketegangan (kontravensi). Berkat mediasi tokoh masyarakat, tercapai kesepakatan damai untuk hidup berdampingan secara harmonis.",
+                question: "Bentuk interaksi sosial di atas termasuk dalam proses...",
+                options: ["Akomodasi (Asosiatif)", "Konflik (Disosiatif)", "Kompetisi bebas"],
+                answer: 0
+            },
+            {
+                level: 2,
+                weight: 10,
+                title: "Soal 7 (Level 2: Aplikasi)",
+                stimulus: "Proses sosialisasi berlangsung seumur hidup. Keluarga merupakan agen sosialisasi primer yang pertama kali meletakkan fondasi nilai moral dan keagamaan kepada seorang anak.",
+                question: "Peran utama agen sosialisasi primer dalam keluarga adalah...",
+                options: ["Membentuk kepribadian dasar dan nilai moral anak", "Mengajarkan keterampilan teknis pekerjaan formal", "Menyediakan hiburan komersial"],
+                answer: 0
+            },
+            // Level 3: Tinggi / HOTS (8-10)
+            {
+                level: 3,
+                weight: 12,
+                title: "Soal 8 (Level 3: HOTS)",
+                stimulus: "Di era digital modern, arus informasi begitu cepat masuk ke berbagai pelosok daerah termasuk Kabupaten Pohuwato. Jika tidak disikapi dengan bijak, hal ini dapat mengikis nilai-nilai gotong royong lokal dan memicu individualisme.",
+                question: "Bagaimana fungsi sosiologi secara kreatif dan solutif dalam menghadapi tantangan modernisasi tersebut?",
+                options: ["Menganalisis dampak perubahan sosial dan merumuskan kearifan lokal sebagai filter penguat solidaritas", "Menolak seluruh teknologi modern secara mutlak tanpa pengecualian", "Membiarkan disintegrasi sosial terjadi begitu saja"],
+                answer: 0
+            },
+            {
+                level: 3,
+                weight: 12,
+                title: "Soal 9 (Level 3: HOTS)",
+                stimulus: "Konflik sosial sering kali muncul akibat kegagalan memahami perbedaan status, peran, dan nilai dalam masyarakat majemuk. Kurikulum Berbasis Cinta menekankan pentingnya empati dan moderasi beragama.",
+                question: "Mengapa pendekatan non-etis dan objektivitas sosiologis sangat penting dalam meredakan konflik sosial di masyarakat majemuk?",
+                options: ["Agar analisis akar permasalahan dilakukan secara netral tanpa prasangka subjektif untuk menemukan solusi tepat", "Agar peneliti dapat menghakimi pihak yang dianggap bersalah", "Agar konflik segera diselesaikan dengan kekerasan koersif"],
+                answer: 0
+            },
+            {
+                level: 3,
+                weight: 12,
+                title: "Soal 10 (Level 3: HOTS)",
+                stimulus: "Berdasarkan Q.S. Al-Hujurat ayat 13, Allah SWT menciptakan manusia bersuku-suku dan berbangsa-bangsa agar saling mengenal (*lita'ārafū*). Sosiologi sebagai ilmu masyarakat meneliti integrasi sosial dan harmoni antarmanusia.",
+                question: "Kesimpulan komprehensif apa yang menghubungkan konsep Sosiologi dengan nilai Kurikulum Berbasis Cinta di Madrasah Aliyah?",
+                options: ["Sosiologi menjadi pisau analisis ilmiah untuk membangun masyarakat yang damai, solutif, dan penuh kasih sayang", "Sosiologi hanya digunakan untuk menghafal teori tanpa praktik sosial", "Ilmu sosiologi terpisah dari nilai ketuhanan dan moral kemanusiaan"],
+                answer: 0
+            }
+        ];
+
+        function loadBerlatihItem(index) {
+            state.berlatihIndex = index;
+            const item = berlatihData[index];
+            document.getElementById('currentBerlatihNum').textContent = index + 1;
+            document.getElementById('berlatihHeaderTitle').textContent = item.title;
+            document.getElementById('berlatihWeight').textContent = item.weight + " Poin";
+
+            const badge = document.getElementById('berlatihLevelBadge');
+            if (item.level === 1) {
+                badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-800";
+                badge.textContent = "Level 1: Dasar";
+            } else if (item.level === 2) {
+                badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-teal-100 text-teal-800";
+                badge.textContent = "Level 2: Penerapan";
+            } else {
+                badge.className = "text-xs font-bold px-3 py-1 rounded-full bg-purple-100 text-purple-800";
+                badge.textContent = "Level 3: HOTS Tinggi";
+            }
+
+            const area = document.getElementById('berlatihContentArea');
+            let html = `
+                <div class="bg-teal-50/80 p-4 rounded-2xl border border-teal-200 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <strong class="text-teal-900 block mb-1"><i class="fa-solid fa-file-lines"></i> Stimulus Asesmen Sosiologi:</strong>
+                    ${item.stimulus}
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-900 text-base">${item.question}</h4>
+                    <div class="space-y-2 mt-3">
+            `;
+
+            item.options.forEach((opt, idx) => {
+                const checked = state.berlatihAnswers[index] === idx ? 'checked' : '';
+                html += `
+                    <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-teal-50 cursor-pointer transition text-sm">
+                        <input type="radio" name="berlatih_mc" value="${idx}" ${checked} class="text-teal-600 focus:ring-teal-500 h-4 w-4">
+                        <span class="text-slate-800 font-medium">${String.fromCharCode(65 + idx)}. ${opt}</span>
+                    </label>
+                `;
+            });
+
+            html += `</div></div>`;
+            area.innerHTML = html;
+
+            const btnText = document.getElementById('berlatihBtnText');
+            if (index === 9) {
+                btnText.textContent = "Selesaikan Asesmen & Lihat Laporan";
+            } else {
+                btnText.textContent = "Simpan & Lanjut";
+            }
+        }
+
+        function nextBerlatihItem() {
+            const selected = document.querySelector('input[name="berlatih_mc"]:checked');
+            if (!selected) {
+                showCustomModal("Pilih Jawaban", "Mohon pilih salah satu jawaban asesmen sebelum melanjutkan.");
+                return;
+            }
+
+            const ans = parseInt(selected.value);
+            state.berlatihAnswers[state.berlatihIndex] = ans;
+
+            if (state.berlatihIndex < 9) {
+                state.berlatihIndex++;
+                loadBerlatihItem(state.berlatihIndex);
+            } else {
+                // Hitung total skor
+                let totalScore = 0;
+                let correctCount = 0;
+                let wrongCount = 0;
+
+                berlatihData.forEach((item, idx) => {
+                    if (state.berlatihAnswers[idx] === item.answer) {
+                        totalScore += item.weight;
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                });
+                state.berlatihScore = totalScore;
+
+                // Kirim hasil ke Google Sheets
+                sendResultToGAS(correctCount, wrongCount);
+
+                // Tampilkan halaman laporan
+                generateReport();
+            }
+        }
+
+        // --- INTERAKSI DENGAN GOOGLE APPS SCRIPT (GAS) ---
+        
+        // 1. Sinkronisasi Data Soal saat aplikasi pertama dibuka
+        function syncQuestionsToGAS() {
+            if (!GAS_URL || GAS_URL === "URL_GAS_ANDA_DISINI") return;
+
+            const allQuestions = [];
+
+            // Gabungkan soal bermain
+            bermainData.forEach((item, i) => {
+                allQuestions.push({
+                    menu: "Bermain",
+                    level: "Gamifikasi",
+                    title: `Tantangan ${i + 1}`,
+                    stimulus: item.stimulus || "-",
+                    question: item.question || "-",
+                    options: item.options || (item.pairs ? item.pairs.map(p => p.term + ":" + p.desc) : item.steps),
+                    answer: item.answer !== undefined ? item.answer : "Tuntas",
+                    weight: 1
+                });
+            });
+
+            // Gabungkan soal berlatih
+            berlatihData.forEach((item, i) => {
+                allQuestions.push({
+                    menu: "Berlatih",
+                    level: `Level ${item.level}`,
+                    title: item.title,
+                    stimulus: item.stimulus,
+                    question: item.question,
+                    options: item.options,
+                    answer: item.answer,
+                    weight: item.weight
+                });
+            });
+
+            fetch(GAS_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: "initQuestions",
+                    questions: allQuestions
+                })
+            }).catch(err => console.log("Gagal menyinkronkan soal ke GAS:", err));
+        }
+
+        // 2. Mengirimkan hasil pengerjaan siswa ke Google Sheets
+        function sendResultToGAS(correctCount, wrongCount) {
+            if (!GAS_URL || GAS_URL === "https://script.google.com/macros/s/AKfycbzpAykPHClHjFNBBH-GndmKs8bhZYMlnJmu43AEHJXoDhm1xMQm0aFHF6nibpTwsgJf/exec") return;
+
+            let predikat = "Kurang (C)";
+            if (state.berlatihScore >= 85) predikat = "Sangat Baik (A)";
+            else if (state.berlatihScore >= 75) predikat = "Baik (B)";
+            else if (state.berlatihScore >= 65) predikat = "Cukup (C)";
+
+            const detailAnswers = {
+                bermain: state.bermainAnswers,
+                berlatih: state.berlatihAnswers
+            };
+
+            const payload = {
+                action: "submitResult",
+                studentName: state.studentName,
+                studentClass: state.studentClass,
+                scoreBermain: state.bermainScore,
+                scoreBerlatih: state.berlatihScore,
+                correctCount: correctCount,
+                wrongCount: wrongCount,
+                predikat: predikat,
+                detailAnswers: detailAnswers
+            };
+
+            fetch(GAS_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                console.log("Data hasil siswa berhasil dikirim ke Google Sheets.");
+            }).catch(err => console.error("Error mengirim data ke GAS:", err));
+        }
+
+        // --- REPORT & PDF EXPORT ---
+        function generateReport() {
+            document.getElementById('berlatihModule').classList.add('hidden');
+            document.getElementById('reportModule').classList.remove('hidden');
+
+            document.getElementById('reportStudentName').textContent = state.studentName;
+            document.getElementById('reportStudentClass').textContent = state.studentClass;
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            document.getElementById('reportBermainScore').textContent = state.bermainScore;
+            document.getElementById('reportBerlatihScore').textContent = state.berlatihScore;
+
+            let predikat = "Kurang (C)";
+            if (state.berlatihScore >= 85) predikat = "Sangat Baik (A)";
+            else if (state.berlatihScore >= 75) predikat = "Baik (B)";
+            else if (state.berlatihScore >= 65) predikat = "Cukup (C)";
+            document.getElementById('reportPredikat').textContent = predikat;
+
+            document.getElementById('reportLevel1').textContent = state.berlatihScore >= 40 ? "Tuntas (Sangat Memuaskan)" : "Perlu Pengayaan";
+            document.getElementById('reportLevel2').textContent = state.berlatihScore >= 60 ? "Tuntas (Baik)" : "Perlu Pengayaan";
+            document.getElementById('reportLevel3').textContent = state.berlatihScore >= 75 ? "Tuntas (HOTS Dikuasai)" : "Perlu Pendalaman";
+        }
+
+        function downloadPDF() {
+            const element = document.getElementById('reportPrintableArea');
+            const opt = {
+                margin:       10,
+                filename:     `Laporan_Sosiologi_${state.studentName.replace(/\s+/g, '_')}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().from(element).set(opt).save().catch(err => {
+                console.error("PDF generation error, falling back to print", err);
+                window.print();
+            });
+        }
+    </script>
+</body>
+</html>
